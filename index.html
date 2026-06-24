@@ -497,11 +497,38 @@
         </div>
     </footer>
 
-    <div class="footer-credits">
-        Bar della rotonda | Via Giuseppe Garibaldi, 8, 20055 Vimodrone MI | Sviluppato da <strong>Zero1 Studio</strong> © 2026. Tutti i diritti riservati.
-    </div>
+        <footer class="legal-footer">
+        <div class="compliance-box">
+            <div class="sign-icon-container">
+                <svg width="48" height="48" viewBox="0 0 50 50">
+                    <circle cx="25" cy="25" r="23" stroke="#f5222d" stroke-width="4" fill="#ffffff" />
+                    <line x1="8" y1="8" x2="42" y2="42" stroke="#f5222d" stroke-width="4" />
+                    <text x="50%" y="55%" font-family="Arial, sans-serif" font-weight="900" font-size="16" fill="#000000" text-anchor="middle" dominant-baseline="middle">18+</text>
+                </svg>
+            </div>
+            <div class="compliance-text">
+                <h4>AVVISO LEGALE ADM / DECRETO DIGNITÀ</h4>
+                <p>Questo sito web ha carattere puramente informativo, descrittivo e geografico delle attività fisiche legalmente autorizzate all'interno del nostro esercizio. Non costituisce in alcun modo pubblicità, induzione al gioco con vincite in denaro o promozione di prodotti da fumo. Il gioco è vietato ai minori di 18 anni e può causare dipendenza patologica. Gioca con moderazione e responsabilità. Consulta le probabilità di vincita sul sito ufficiale dell'Agenzia delle Dogane e dei Monopoli (ADM).</p>
+            </div>
+        </div>
 
-    <script>
+        <div style="max-width: 1200px; margin: 20px auto 0 auto; border-top: 1px solid rgba(0,0,0,0.06);"></div>
+
+        <div class="footer-credits" style="text-align: center; padding-top: 15px; font-size: 0.8rem; color: #8c8c8c; border: none; background: transparent;">
+            Bar della rotonda | Via Giuseppe Garibaldi, 8, 20055 Vimodrone MI | © 2026 Tutti i diritti riservati.
+        </div>
+
+        <div class="zero1-tag" style="text-align: center; padding-top: 12px; font-size: 0.85rem; color: #666666; display: flex; align-items: center; justify-content: center; line-height: 1;">
+            <a href="https://zero1studio.it" target="_blank" style="text-decoration: none; color: inherit; display: inline-flex; align-items: center; gap: 6px; font-weight: 600; vertical-align: middle; transition: color 0.2s;">
+                <svg width="15" height="15" viewBox="0 0 100 100" style="display: inline-block; vertical-align: middle;">
+                    <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="12" fill="none" />
+                    <line x1="50" y1="26" x2="50" y2="74" stroke="#0071e3" stroke-width="12" stroke-linecap="round" />
+                </svg>
+                <span style="display: inline-block; vertical-align: middle; margin-top: 1px;">Sito realizzato da Zero1 Studio</span>
+            </a>
+        </div>
+    </footer>
+
         // 1. 营业状态变色计算器逻辑
         function updateShopStatus() {
             const now = new Date();
