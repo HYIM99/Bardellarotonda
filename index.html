@@ -88,28 +88,54 @@
             border: 1px solid #4371d6;
         }
 
+        /* 🗺️ Hero Map Layout Upgrade */
         .hero {
             background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
             padding: 40px 5%;
-            text-align: center;
             border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            max-width: 100%;
+        }
+
+        .hero-info {
+            flex: 1;
+            text-align: left;
+            min-width: 300px;
         }
 
         .hero h1 {
             color: var(--primary-color);
             font-size: 2rem;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .hero p {
             color: #555555;
-            max-width: 600px;
-            margin: 0 auto 20px auto;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .hero-map-wrapper {
+            flex: 1;
+            min-width: 320px;
+            height: 250px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        .hero-map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         .cta-buttons {
             display: flex;
-            justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
         }
@@ -118,7 +144,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 20px;
+            padding: 12px 22px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
@@ -126,7 +152,7 @@
         }
 
         .btn-primary { background-color: var(--primary-color); color: white; }
-        .btn-secondary { background-color: #25d366; color: white; } /* WhatsApp green as option */
+        .btn-secondary { background-color: #52c41a; color: white; }
 
         .main-container {
             max-width: 1200px;
@@ -297,6 +323,25 @@
             border-top: 1px solid var(--border-color);
             background: #fafafa;
         }
+
+        /* Responsive Layout for Mobile Devices */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            .hero-info {
+                text-align: center;
+            }
+            .cta-buttons {
+                justify-content: center;
+            }
+            .hero-map-wrapper {
+                width: 100%;
+                height: 220px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -319,13 +364,22 @@
     </header>
 
     <section class="hero">
-        <h1>Il tuo punto di riferimento quotidiano a Vimodrone</h1>
-        <p>Servizio Caffetteria di qualità, Tabaccheria completa, Ricevitoria Lotto, corner Scommesse Better e un'accogliente Sala Slot interna.</p>
-        <div class="cta-buttons">
-            <a href="https://maps.google.com/?q=Bar+della+rotonda+Via+Giuseppe+Garibaldi+8+200055+Vimodrone" target="_blank" class="btn btn-primary">
-                🗺️ Naviga con Google Maps (Via G. Garibaldi, 8)
-            </a>
-            <a href="tel:+390291234567" class="btn btn-secondary">📞 Chiama in Negozio</a>
+        <div class="hero-info">
+            <h1>Il tuo punto di riferimento quotidiano a Vimodrone</h1>
+            <p>Servizio Caffetteria di qualità, Tabaccheria completa, Ricevitoria Lotto, corner Scommesse Better e un'accogliente Sala Slot interna.</p>
+            <div class="cta-buttons">
+                <a href="tel:+390291234567" class="btn btn-secondary">📞 Chiama in Negozio</a>
+                <a href="https://maps.google.com/?q=Bar+della+rotonda,+Via+Giuseppe+Garibaldi,+8,+20055+Vimodrone+MI" target="_blank" class="btn btn-primary" style="background-color:#4285F4;">🗺️ Apri in App Maps</a>
+            </div>
+        </div>
+        
+        <div class="hero-map-wrapper">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.5392576088825!2d9.281663976860014!3d45.52217847107481!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c7794e4f9de3%3A0x92bd8ea9a919feed!2sBar%20della%20rotonda!5e0!3m2!1sit!2sit!4v1719270000000!5m2!1sit!2sit" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
     </section>
 
@@ -416,14 +470,10 @@
                 <div class="widget-header-title">☀️ Meteo Locale & Temperature</div>
                 <div class="weather-container">
                     <div class="weather-today">
-                        <div style="font-weight: bold; color: var(--primary-color);">Previsione di Oggi</div>
-                        <div class="weather-temp">26°C <span style="font-size: 1rem; font-weight: normal; color: #555555;">☀️ Sereno / Ideale per un Caffè</span></div>
+                        <div style="font-weight: bold; color: var(--primary-color);">Caricamento meteo...</div>
                     </div>
                     <table class="weather-forecast-table">
-                        <tr><td>Domani (Venerdì)</td><td>🌤️ Poco Nuvoloso</td><td style="text-align: right; font-weight: bold;">19°C / 28°C</td></tr>
-                        <tr><td>Sabato</td><td>🌦️ Piovaschi Locali</td><td style="text-align: right; font-weight: bold;">17°C / 24°C</td></tr>
-                        <tr><td>Domenica</td><td>☀️ Splendido Sole</td><td style="text-align: right; font-weight: bold;">20°C / 29°C</td></tr>
-                    </table>
+                        </table>
                 </div>
             </div>
 
@@ -452,55 +502,118 @@
     </div>
 
     <script>
+        // 1. 营业状态变色计算器逻辑
         function updateShopStatus() {
             const now = new Date();
-            const currentDay = now.getDay(); // 0为周日，1为周一，以此类推
+            const currentDay = now.getDay(); 
             const currentHour = now.getHours();
             const currentMinute = now.getMinutes();
             const currentTimeInMinutes = (currentHour * 60) + currentMinute;
 
-            // 高亮细化列表中的“今天”
             const rows = document.querySelectorAll('.timetable-row');
             rows.forEach(row => {
                 if (parseInt(row.getAttribute('data-day')) === currentDay) {
                     row.classList.add('today-active');
+                } else {
+                    row.classList.remove('today-active');
                 }
             });
 
-            // 初始化店铺当天的营业时间段数据 (以分钟计算)
-            let openTime = (6 * 60) + 30; // 所有日子都是 06:30 开门
-            let closeTime = (21 * 60) + 30; // 默认 21:30 关门
+            let openTime = (6 * 60) + 30; // 06:30
+            let closeTime = (21 * 60) + 30; // 21:30
 
             if (currentDay === 1) { 
-                closeTime = 15 * 60; // 周一特殊时间：15:00 关门
+                closeTime = 15 * 60; // 周一: 15:00 关门
             }
 
             const badge = document.getElementById('dynamic-status-badge');
 
-            // 逻辑状态核心判定
             if (currentTimeInMinutes >= openTime && currentTimeInMinutes < closeTime) {
-                // 已经在营业中，检查是否在关门前 1 小时内 (即将关门预警阶段)
                 const minutesToClose = closeTime - currentTimeInMinutes;
                 
                 if (minutesToClose <= 60) {
-                    // ⏳ 即将关门：显示橙色
                     badge.textContent = "⚠️ In Chiusura (Chiude a breve)";
                     badge.className = "status-badge status-warning";
                 } else {
-                    // 🟢 正常营业：显示绿色
                     badge.textContent = "🟢 Aperto Ora";
                     badge.className = "status-badge status-open";
                 }
             } else {
-                // 🔴 已关门：显示红色
                 badge.textContent = "🔴 Chiuso";
                 badge.className = "status-badge status-closed";
             }
         }
 
-        // 页面加载时自动执行，并每隔 30 秒后台静默检查刷新一次
-        window.addEventListener('DOMContentLoaded', updateShopStatus);
-        setInterval(updateShopStatus, 30000);
+        // 2. 🌐 异步调用开源气象接口
+        async function fetchRealTimeWeather() {
+            const url = 'https://api.open-meteo.com/v1/forecast?latitude=45.5132&longitude=9.2858&current_weather=true&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=Europe/Berlin';
+            
+            const weatherCodesText = {
+                0: "☀️ Sereno", 1: "🌤️ Quasi Sereno", 2: "⛅ Poco Nuvoloso", 3: "☁️ Coperto",
+                45: "🌫️ Nebbia", 48: "🌫️ Nebbia Brinata",
+                51: "🌦️ Pioggerellina", 53: "🌦️ Pioggerellina", 55: "🌦️ Pioggerellina Fitta",
+                61: "🌧️ Pioggia Debole", 63: "🌧️ Pioggia Moderata", 65: "🌧️ Pioggia Forte",
+                71: "❄️ Neve Lieve", 73: "❄️ Neve Moderata", 75: "❄️ Neve Forte",
+                80: "🌧️ Rovescio di Pioggia", 81: "🌧️ Rovescio Forte", 82: "⛈️ Temporale"
+            };
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Errore nel recupero dati');
+                const data = await response.json();
+
+                const currentTemp = Math.round(data.current_weather.temperature);
+                const currentCode = data.current_weather.weathercode;
+                const weatherText = weatherCodesText[currentCode] || "🌤️ Variabile";
+
+                let customTip = "Ideale per un caffè espresso caldo!";
+                if (currentTemp >= 25) customTip = "Perfetto per una birra fresca o un Aperitivo in compagnia!";
+                if (currentCode >= 60) customTip = "Fuori piove, vieni a rilassarti all'interno!";
+
+                document.querySelector('.weather-today').innerHTML = `
+                    <div style="font-weight: bold; color: var(--primary-color);">Previsione di Oggi (Vimodrone)</div>
+                    <div class="weather-temp">${currentTemp}°C <span style="font-size: 1rem; font-weight: normal; color: #555555;">${weatherText} / ${customTip}</span></div>
+                `;
+
+                const forecastTable = document.querySelector('.weather-forecast-table');
+                let forecastHtml = '';
+                const daysOfWeek = ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"];
+                const todayIndex = new Date().getDay();
+
+                for(let i = 1; i <= 3; i++) {
+                    const nextDayIndex = (todayIndex + i) % 7;
+                    const dayName = daysOfWeek[nextDayIndex];
+                    
+                    const maxTemp = Math.round(data.daily.temperature_2m_max[i]);
+                    const minTemp = Math.round(data.daily.temperature_2m_min[i]);
+                    const dailyCode = data.daily.weathercode[i];
+                    const dailyText = weatherCodesText[dailyCode] || "🌤️ Variabile";
+
+                    forecastHtml += `
+                        <tr>
+                            <td>${dayName}</td>
+                            <td>${dailyText}</td>
+                            <td style="text-align: right; font-weight: bold;">${minTemp}°C / ${maxTemp}°C</td>
+                        </tr>
+                    `;
+                }
+                forecastTable.innerHTML = forecastHtml;
+
+            } catch (error) {
+                console.error('Impossibile caricare il meteo:', error);
+                document.querySelector('.weather-today').innerHTML = `
+                    <div style="font-weight: bold; color: var(--primary-color);">Previsione di Oggi</div>
+                    <div class="weather-temp" style="font-size:1.2rem; color:var(--danger-color);">🌤️ Servizio meteo temporaneamente non disponibile</div>
+                `;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateShopStatus();
+            fetchRealTimeWeather();
+            setInterval(updateShopStatus, 30000);
+            setInterval(fetchRealTimeWeather, 900000);
+        });
     </script>
 </body>
 </html>
