@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar della rotonda - Servizi, Tabaccheria & Ricevitoria</title>
+    <style>
+        :root {
+            --primary-color: #0052cc;
+            --accent-orange: #fa8c16;
+            --dark-bg: #141414;
+            --light-bg: #f5f7fa;
+            --border-color: #e8e8e8;
+            --text-color: #262626;
+            --danger-color: #f5222d;
+            
+            /* Dynamic State Colors */
+            --state-open: #52c41a;
+            --state-warning: #fa8c16;
+            --state-closed: #f5222d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--dark-bg);
+            color: #ffffff;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .brand-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Top Header Badges Container */
+        .header-badges {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* Dynamic Status Badge Base */
+        .status-badge {
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .status-open { background-color: var(--state-open); }
+        .status-warning { background-color: var(--state-warning); }
+        .status-closed { background-color: var(--state-closed); }
+
+        /* 24H Vending Machine Badge */
+        .vending-badge {
+            background-color: #002b80;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid #4371d6;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            padding: 40px 5%;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: #555555;
+            max-width: 600px;
+            margin: 0 auto 20px auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary { background-color: var(--primary-color); color: white; }
+        .btn-secondary { background-color: #25d366; color: white; } /* WhatsApp green as option */
+
+        .main-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 10px;
+        }
+
+        /* Services Grid Layout */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .service-icon {
+            width: 36px;
+            height: 36px;
+            fill: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-title {
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #111111;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: #666666;
+            text-align: justify;
+        }
+
+        /* Widgets Section Wrapper */
+        .info-section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .widget-box {
+            background-color: var(--light-bg);
+            border: 1px solid #e1e6eb;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .widget-header-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e1e6eb;
+            color: #1a1a1a;
+        }
+
+        /* Detailed Schedule Row Highlight Style */
+        .timetable-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 0.9rem;
+            border-bottom: 1px dashed #e1e6eb;
+        }
+        .timetable-row.today-active {
+            font-weight: bold;
+            color: var(--primary-color);
+            background-color: #e6f7ff;
+            padding-left: 5px;
+            padding-right: 5px;
+            border-radius: 4px;
+        }
+
+        .weather-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .weather-today {
+            background-color: #e6f7ff;
+            border: 1px solid #91d5ff;
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        .weather-temp {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 5px 0;
+        }
+
+        .weather-forecast-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .weather-forecast-table td {
+            padding: 8px 5px;
+            border-top: 1px dashed #e1e6eb;
+        }
+
+        .legal-footer {
+            background-color: #fff1f0;
+            border-top: 3px solid var(--danger-color);
+            padding: 25px 5%;
+            margin-top: 50px;
+        }
+
+        .compliance-box {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .sign-icon-container {
+            flex-shrink: 0;
+        }
+
+        .compliance-text h4 {
+            color: var(--danger-color);
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+
+        .compliance-text p {
+            font-size: 0.85rem;
+            color: #434343;
+            text-align: justify;
+        }
+
+        .footer-credits {
+            text-align: center;
+            padding: 15px;
+            font-size: 0.8rem;
+            color: #8c8c8c;
+            border-top: 1px solid var(--border-color);
+            background: #fafafa;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" style="fill: #ffffff;">
+                <rect x="2" y="2" width="20" height="20" rx="3" fill="#002b80"/>
+                <path d="M6 6h12v3h-4.5v9h-3v-9h-4.5z" fill="#ffffff"/>
+            </svg>
+            Bar della rotonda
+        </div>
+        
+        <div class="header-badges">
+            <div id="dynamic-status-badge" class="status-badge status-closed">Calcolo in corso...</div>
+            <div class="vending-badge">
+                <span>🚬 Distributore Automatico 24H</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Il tuo punto di riferimento quotidiano a Vimodrone</h1>
+        <p>Servizio Caffetteria di qualità, Tabaccheria completa, Ricevitoria Lotto, corner Scommesse Better e un'accogliente Sala Slot interna.</p>
+        <div class="cta-buttons">
+            <a href="https://maps.google.com/?q=Bar+della+rotonda+Via+Giuseppe+Garibaldi+8+200055+Vimodrone" target="_blank" class="btn btn-primary">
+                🗺️ Naviga con Google Maps (Via G. Garibaldi, 8)
+            </a>
+            <a href="tel:+390291234567" class="btn btn-secondary">📞 Chiama in Negozio</a>
+        </div>
+    </section>
+
+    <main class="main-container">
+
+        <h2 class="section-title">I Nostri Servizi Principali</h2>
+        <div class="services-grid">
+            
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24"><path d="M2 21h18v-2H2v2M20 8h-2V5h2v3M4 19h12v-4H4v4m0-6h12V5H4v8m14-8h2a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2V5z"/></svg>
+                    </div>
+                    <div class="service-title">Bar & Caffetteria</div>
+                </div>
+                <div class="service-desc">Inizia al meglio la giornata con i nostri Espresso artigianali e cornetti caldi. Prova le nostre bibite, aperitivi e pranzi veloci con panini freschi e insalate.</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24" style="fill: #002b80;"><rect x="1" y="1" width="22" height="22" rx="2"/><path d="M5 5h14v3h-5.5v11h-3v-11h-5.5z" fill="#fff"/></svg>
+                    </div>
+                    <div class="service-title">Tabaccheria & E-Cig</div>
+                </div>
+                <div class="service-desc">Rivenditore ufficiale di tabacchi e delle principali marche di sigarette elettroniche. All'esterno è attivo il nostro <strong>distributore automatico h24</strong> per sigarette e ricariche.</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24"><path d="M21 18v1c0 1.1-.9 2-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1h-9a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9m-9-2h10V8H12v8m4-2.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5z"/></svg>
+                    </div>
+                    <div class="service-title">Servizi Punto LIS</div>
+                </div>
+                <div class="service-desc">Paga qui in modo rapido e sicuro le tue bollette (luce, gas, acqua), il bollo auto, deleghe F24, ricariche telefoniche e acquisto di valori bollati ufficiali dello Stato.</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+                    </div>
+                    <div class="service-title">Gioco & Ricevitoria</div>
+                </div>
+                <div class="service-desc">Ricevitoria autorizzata per SuperEnalotto, Gioco del Lotto, 10eLotto ed Eurojackpot. Ampio assortimento di biglietti Gratta e Vinci sempre aggiornati.</div>
+            </div>
+
+            <div class="service-card" style="border-left: 4px solid var(--accent-orange);">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24" style="fill: var(--accent-orange);"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                    </div>
+                    <div class="service-title" style="color: var(--accent-orange);">Scommesse Better</div>
+                </div>
+                <div class="service-desc">Corner autorizzato per scommesse sportive nazionali e internazionali. Lavagne quote sempre aggiornate per Calcio, Ippica, Levrieri, eventi Virtuali e il classico Totocalcio.</div>
+            </div>
+
+            <div class="service-card" style="border-left: 4px solid var(--accent-orange);">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24" style="fill: var(--accent-orange);"><path d="M7 2v11h10V2H7zm8 4h-2V4h2v2zm-4 0H9V4h2v2zm4 4h-2V8h2v2zm-4 0H9V8h2v2zm6 5H7v2h10v-2zm2-12h-1v16H4V3H3v18h18V3h-2z"/></svg>
+                    </div>
+                    <div class="service-title" style="color: var(--accent-orange);">Sala Slot Hub</div>
+                </div>
+                <div class="service-desc">Sala slot accogliente e riservata, dotata di apparecchi da intrattenimento moderni e certificati ADM, per un momento di svago in totale sicurezza e discrezione.</div>
+            </div>
+
+        </div>
+
+        <h2 class="section-title">Informazioni utili e orari</h2>
+        <div class="info-section-grid">
+            
+            <div class="widget-box">
+                <div class="widget-header-title">📅 Orari d'Apertura Dettagliati</div>
+                <div id="timetable-list">
+                    <div class="timetable-row" data-day="1"><span>Lunedì</span><span>06:30 - 15:00</span></div>
+                    <div class="timetable-row" data-day="2"><span>Martedì</span><span>06:30 - 21:30</span></div>
+                    <div class="timetable-row" data-day="3"><span>Mercoledì</span><span>06:30 - 21:30</span></div>
+                    <div class="timetable-row" data-day="4"><span>Giovedì</span><span>06:30 - 21:30</span></div>
+                    <div class="timetable-row" data-day="5"><span>Venerdì</span><span>06:30 - 21:30</span></div>
+                    <div class="timetable-row" data-day="6"><span>Sabato</span><span>06:30 - 21:30</span></div>
+                    <div class="timetable-row" data-day="0"><span>Domenica</span><span>06:30 - 21:30</span></div>
+                </div>
+            </div>
+
+            <div class="widget-box">
+                <div class="widget-header-title">☀️ Meteo Locale & Temperature</div>
+                <div class="weather-container">
+                    <div class="weather-today">
+                        <div style="font-weight: bold; color: var(--primary-color);">Previsione di Oggi</div>
+                        <div class="weather-temp">26°C <span style="font-size: 1rem; font-weight: normal; color: #555555;">☀️ Sereno / Ideale per un Caffè</span></div>
+                    </div>
+                    <table class="weather-forecast-table">
+                        <tr><td>Domani (Venerdì)</td><td>🌤️ Poco Nuvoloso</td><td style="text-align: right; font-weight: bold;">19°C / 28°C</td></tr>
+                        <tr><td>Sabato</td><td>🌦️ Piovaschi Locali</td><td style="text-align: right; font-weight: bold;">17°C / 24°C</td></tr>
+                        <tr><td>Domenica</td><td>☀️ Splendido Sole</td><td style="text-align: right; font-weight: bold;">20°C / 29°C</td></tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="legal-footer">
+        <div class="compliance-box">
+            <div class="sign-icon-container">
+                <svg width="48" height="48" viewBox="0 0 50 50">
+                    <circle cx="25" cy="25" r="23" stroke="#f5222d" stroke-width="4" fill="#ffffff" />
+                    <line x1="8" y1="8" x2="42" y2="42" stroke="#f5222d" stroke-width="4" />
+                    <text x="50%" y="55%" font-family="Arial, sans-serif" font-weight="900" font-size="16" fill="#000000" text-anchor="middle" dominant-baseline="middle">18+</text>
+                </svg>
+            </div>
+            <div class="compliance-text">
+                <h4>AVVISO LEGALE ADM / DECRETO DIGNITÀ</h4>
+                <p>Questo sito web ha carattere puramente informativo, descrittivo e geografico delle attività fisiche legalmente autorizzate all'interno del nostro esercizio. Non costituisce in alcun modo pubblicità, induzione al gioco con vincite in denaro o promozione di prodotti da fumo. Il gioco è vietato ai minori di 18 anni e può causare dipendenza patologica. Gioca con moderazione e responsabilità. Consulta le probabilità di vincita sul sito ufficiale dell'Agenzia delle Dogane e dei Monopoli (ADM).</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="footer-credits">
+        Bar della rotonda | Via Giuseppe Garibaldi, 8, 20055 Vimodrone MI | Sviluppato da <strong>Zero1 Studio</strong> © 2026. Tutti i diritti riservati.
+    </div>
+
+    <script>
+        function updateShopStatus() {
+            const now = new Date();
+            const currentDay = now.getDay(); // 0为周日，1为周一，以此类推
+            const currentHour = now.getHours();
+            const currentMinute = now.getMinutes();
+            const currentTimeInMinutes = (currentHour * 60) + currentMinute;
+
+            // 高亮细化列表中的“今天”
+            const rows = document.querySelectorAll('.timetable-row');
+            rows.forEach(row => {
+                if (parseInt(row.getAttribute('data-day')) === currentDay) {
+                    row.classList.add('today-active');
+                }
+            });
+
+            // 初始化店铺当天的营业时间段数据 (以分钟计算)
+            let openTime = (6 * 60) + 30; // 所有日子都是 06:30 开门
+            let closeTime = (21 * 60) + 30; // 默认 21:30 关门
+
+            if (currentDay === 1) { 
+                closeTime = 15 * 60; // 周一特殊时间：15:00 关门
+            }
+
+            const badge = document.getElementById('dynamic-status-badge');
+
+            // 逻辑状态核心判定
+            if (currentTimeInMinutes >= openTime && currentTimeInMinutes < closeTime) {
+                // 已经在营业中，检查是否在关门前 1 小时内 (即将关门预警阶段)
+                const minutesToClose = closeTime - currentTimeInMinutes;
+                
+                if (minutesToClose <= 60) {
+                    // ⏳ 即将关门：显示橙色
+                    badge.textContent = "⚠️ In Chiusura (Chiude a breve)";
+                    badge.className = "status-badge status-warning";
+                } else {
+                    // 🟢 正常营业：显示绿色
+                    badge.textContent = "🟢 Aperto Ora";
+                    badge.className = "status-badge status-open";
+                }
+            } else {
+                // 🔴 已关门：显示红色
+                badge.textContent = "🔴 Chiuso";
+                badge.className = "status-badge status-closed";
+            }
+        }
+
+        // 页面加载时自动执行，并每隔 30 秒后台静默检查刷新一次
+        window.addEventListener('DOMContentLoaded', updateShopStatus);
+        setInterval(updateShopStatus, 30000);
+    </script>
+</body>
+</html>
