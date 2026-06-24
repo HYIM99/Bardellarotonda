@@ -44,12 +44,28 @@
             gap: 15px;
         }
 
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-title-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
         .brand-title {
             font-size: 1.4rem;
             font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            line-height: 1.2;
+        }
+
+        .brand-address {
+            font-size: 0.8rem;
+            opacity: 0.75;
+            margin-top: 3px;
+            font-weight: normal;
         }
 
         /* Top Header Badges Container */
@@ -88,7 +104,7 @@
             border: 1px solid #4371d6;
         }
 
-        /* 🗺️ Hero Map Layout Upgrade */
+        /* Hero Map Layout Upgrade */
         .hero {
             background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
             padding: 40px 5%;
@@ -315,15 +331,6 @@
             text-align: justify;
         }
 
-        .footer-credits {
-            text-align: center;
-            padding: 15px;
-            font-size: 0.8rem;
-            color: #8c8c8c;
-            border-top: 1px solid var(--border-color);
-            background: #fafafa;
-        }
-
         /* Responsive Layout for Mobile Devices */
         @media (max-width: 768px) {
             .hero {
@@ -347,12 +354,15 @@
 <body>
 
     <header>
-        <div class="brand-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" style="fill: #ffffff;">
+        <div class="brand-container">
+            <svg width="32" height="32" viewBox="0 0 24 24" style="fill: #ffffff; flex-shrink: 0;">
                 <rect x="2" y="2" width="20" height="20" rx="3" fill="#002b80"/>
                 <path d="M6 6h12v3h-4.5v9h-3v-9h-4.5z" fill="#ffffff"/>
             </svg>
-            Bar della rotonda
+            <div class="brand-title-wrapper">
+                <div class="brand-title">Bar della rotonda</div>
+                <div class="brand-address">Via Giuseppe Garibaldi, 8, Vimodrone (MI)</div>
+            </div>
         </div>
         
         <div class="header-badges">
@@ -368,14 +378,14 @@
             <h1>Il tuo punto di riferimento quotidiano a Vimodrone</h1>
             <p>Servizio Caffetteria di qualità, Tabaccheria completa, Ricevitoria Lotto, corner Scommesse Better e un'accogliente Sala Slot interna.</p>
             <div class="cta-buttons">
-                <a href="tel:+39" class="btn btn-secondary">📞 Chiama in Negozio</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Bar+della+rotonda+Via+Giuseppe+Garibaldi+8+Vimodrone" target="_blank" class="btn btn-primary" style="background-color:#4285F4;">🗺️ Apri in App Maps</a>
+                <a href="tel:+39022501069" class="btn btn-secondary">📞 Chiama in Negozio</a>
+                <a href="https://maps.google.com/?q=Bar+della+rotonda,+Via+Giuseppe+Garibaldi,+8,+20055+Vimodrone+MI" target="_blank" class="btn btn-primary" style="background-color:#4285F4;">🗺️ Apri in App Maps</a>
             </div>
         </div>
         
         <div class="hero-map-wrapper">
             <iframe 
-                src="https://maps.google.com/maps?q=Bar%20della%20rotonda,%20Via%20Giuseppe%20Garibaldi%208,%20Vimodrone&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.3526685810235!2d9.281663976865231!3d45.5221821302127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c7f74e4f9de3%3A0x92bd8ea9a919fedb!2sBar%20della%20rotonda!5e0!3m2!1sit!2sit!4v1719270000000!5m2!1sit!2sit" 
                 allowfullscreen="" 
                 loading="lazy" 
                 referrerpolicy="no-referrer-when-downgrade">
@@ -391,17 +401,17 @@
             <div class="service-card">
                 <div class="service-header">
                     <div class="service-icon">
-                        <svg viewBox="0 0 24 24" width="24" height="24"><path d="M2 21h18v-2H2v2M20 8h-2V5h2v3M4 19h12v-4H4v4m0-6h12V5H4v8m14-8h2a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2V5z"/></svg>
+                        <svg viewBox="0 0 24 24" width="34" height="34"><path d="M2 21h18v-2H2v2M20 8h-2V5h2v3M4 19h12v-4H4v4m0-6h12V5H4v8m14-8h2a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2V5z"/></svg>
                     </div>
                     <div class="service-title">Bar & Caffetteria</div>
                 </div>
-                <div class="service-desc">Inizia al meglio la giornata con i nostri Espresso artigianali e cornetti caldi. Prova le nostre bibite, aperitivi e pranzi veloci con panini freschi e insalate.</div>
+                <div class="service-desc">Inizia al meglio la giornata con i nostri Espresso artigianali e cornetti caldi. Prova le nostre bibite, aperitivi e pranzi veloci con panini frescos e insalate.</div>
             </div>
 
             <div class="service-card">
                 <div class="service-header">
                     <div class="service-icon">
-                        <svg viewBox="0 0 24 24" width="24" height="24" style="fill: #002b80;"><rect x="1" y="1" width="22" height="22" rx="2"/><path d="M5 5h14v3h-5.5v11h-3v-11h-5.5z" fill="#fff"/></svg>
+                        <svg viewBox="0 0 24 24" width="34" height="34" style="fill: #002b80;"><rect x="1" y="1" width="22" height="22" rx="2"/><path d="M5 5h14v3h-5.5v11h-3v-11h-5.5z" fill="#fff"/></svg>
                     </div>
                     <div class="service-title">Tabaccheria & E-Cig</div>
                 </div>
@@ -411,7 +421,7 @@
             <div class="service-card">
                 <div class="service-header">
                     <div class="service-icon">
-                        <svg viewBox="0 0 24 24" width="24" height="24"><path d="M21 18v1c0 1.1-.9 2-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1h-9a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9m-9-2h10V8H12v8m4-2.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5z"/></svg>
+                        <svg viewBox="0 0 24 24" width="34" height="34"><path d="M21 18v1c0 1.1-.9 2-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1h-9a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9m-9-2h10V8H12v8m4-2.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5z"/></svg>
                     </div>
                     <div class="service-title">Servizi Punto LIS</div>
                 </div>
@@ -421,7 +431,7 @@
             <div class="service-card">
                 <div class="service-header">
                     <div class="service-icon">
-                        <svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+                        <svg viewBox="0 0 24 24" width="34" height="34"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
                     </div>
                     <div class="service-title">Gioco & Ricevitoria</div>
                 </div>
@@ -431,7 +441,7 @@
             <div class="service-card" style="border-left: 4px solid var(--accent-orange);">
                 <div class="service-header">
                     <div class="service-icon">
-                        <svg viewBox="0 0 24 24" width="24" height="24" style="fill: var(--accent-orange);"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                        <svg viewBox="0 0 24 24" width="34" height="34" style="fill: var(--accent-orange);"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
                     </div>
                     <div class="service-title" style="color: var(--accent-orange);">Scommesse Better</div>
                 </div>
@@ -441,7 +451,7 @@
             <div class="service-card" style="border-left: 4px solid var(--accent-orange);">
                 <div class="service-header">
                     <div class="service-icon">
-                        <svg viewBox="0 0 24 24" width="24" height="24" style="fill: var(--accent-orange);"><path d="M7 2v11h10V2H7zm8 4h-2V4h2v2zm-4 0H9V4h2v2zm4 4h-2V8h2v2zm-4 0H9V8h2v2zm6 5H7v2h10v-2zm2-12h-1v16H4V3H3v18h18V3h-2z"/></svg>
+                        <svg viewBox="0 0 24 24" width="34" height="34" style="fill: var(--accent-orange);"><path d="M7 2v11h10V2H7zm8 4h-2V4h2v2zm-4 0H9V4h2v2zm4 4h-2V8h2v2zm-4 0H9V8h2v2zm6 5H7v2h10v-2zm2-12h-1v16H4V3H3v18h18V3h-2z"/></svg>
                     </div>
                     <div class="service-title" style="color: var(--accent-orange);">Sala Slot Hub</div>
                 </div>
@@ -495,22 +505,6 @@
                 <p>Questo sito web ha carattere puramente informativo, descrittivo e geografico delle attività fisiche legalmente autorizzate all'interno del nostro esercizio. Non costituisce in alcun modo pubblicità, induzione al gioco con vincite in denaro o promozione di prodotti da fumo. Il gioco è vietato ai minori di 18 anni e può causare dipendenza patologica. Gioca con moderazione e responsabilità. Consulta le probabilità di vincita sul sito ufficiale dell'Agenzia delle Dogane e dei Monopoli (ADM).</p>
             </div>
         </div>
-    </footer>
-
-        <footer class="legal-footer">
-        <div class="compliance-box">
-            <div class="sign-icon-container">
-                <svg width="48" height="48" viewBox="0 0 50 50">
-                    <circle cx="25" cy="25" r="23" stroke="#f5222d" stroke-width="4" fill="#ffffff" />
-                    <line x1="8" y1="8" x2="42" y2="42" stroke="#f5222d" stroke-width="4" />
-                    <text x="50%" y="55%" font-family="Arial, sans-serif" font-weight="900" font-size="16" fill="#000000" text-anchor="middle" dominant-baseline="middle">18+</text>
-                </svg>
-            </div>
-            <div class="compliance-text">
-                <h4>AVVISO LEGALE ADM / DECRETO DIGNITÀ</h4>
-                <p>Questo sito web ha carattere puramente informativo, descrittivo e geografico delle attività fisiche legalmente autorizzate all'interno del nostro esercizio. Non costituisce in alcun modo pubblicità, induzione al gioco con vincite in denaro o promozione di prodotti da fumo. Il gioco è vietato ai minori di 18 anni e può causare dipendenza patologica. Gioca con moderazione e responsabilità. Consulta le probabilità di vincita sul sito ufficiale dell'Agenzia delle Dogane e dei Monopoli (ADM).</p>
-            </div>
-        </div>
 
         <div style="max-width: 1200px; margin: 20px auto 0 auto; border-top: 1px solid rgba(0,0,0,0.06);"></div>
 
@@ -529,7 +523,8 @@
         </div>
     </footer>
 
-        // 1. 营业状态变色计算器逻辑
+    <script>
+        // 1. 营业时间自动判定器 (支持周一特殊半天自动切换)
         function updateShopStatus() {
             const now = new Date();
             const currentDay = now.getDay(); 
@@ -550,14 +545,13 @@
             let closeTime = (21 * 60) + 30; // 21:30
 
             if (currentDay === 1) { 
-                closeTime = 15 * 60; // 周一: 15:00 关门
+                closeTime = 15 * 60; // Lunedì chiude alle 15:00
             }
 
             const badge = document.getElementById('dynamic-status-badge');
 
             if (currentTimeInMinutes >= openTime && currentTimeInMinutes < closeTime) {
                 const minutesToClose = closeTime - currentTimeInMinutes;
-                
                 if (minutesToClose <= 60) {
                     badge.textContent = "⚠️ In Chiusura (Chiude a breve)";
                     badge.className = "status-badge status-warning";
@@ -571,7 +565,7 @@
             }
         }
 
-        // 2. 🌐 异步调用开源气象接口
+        // 2. 🌐 Open-Meteo 真实气象接口异步调用
         async function fetchRealTimeWeather() {
             const url = 'https://api.open-meteo.com/v1/forecast?latitude=45.5132&longitude=9.2858&current_weather=true&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=Europe/Berlin';
             
